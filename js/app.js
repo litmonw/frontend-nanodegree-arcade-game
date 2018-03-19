@@ -34,11 +34,28 @@ Player.prototype.update = function (dt) {
 
 Player.prototype.handleInput = function (movement) {
     switch (movement) {
-        case 'left': this.x -= 101; break;
-        case 'right': this.x += 101; break;
-        case 'up': this.y -= 83; break;
-        case 'down': this.y += 83; break;
+        case 'left':
+            if (this.x === 0) {
+                break;
+            }
+            this.x -= 101; break;
+        case 'right':
+            if (this.x === 404) {
+                break;
+            }
+            this.x += 101; break;
+        case 'up':
+            if (this.y === -28) {
+                break;
+            }
+            this.y -= 83; break;
+        case 'down':
+            if (this.y === 387) {
+                break;
+            }
+            this.y += 83; break;
     }
+    console.log(this.x, this.y);
 };
 
 // 游戏必须的函数，在屏幕上画出玩家

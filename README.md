@@ -1,6 +1,22 @@
-frontend-nanodegree-arcade-game
+# 青蛙过河
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## 开始
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### 游戏准备
+
+git clone 或者 download 文件，打开 index.html 即可开始体验青蛙过河小游戏。
+
+### 游戏流程
+
+1. 玩家通过上下左右方向键进行移动角色。
+
+2. 尽可能的躲避随机出没的瓢虫敌人，一旦触碰到角色将退回起始点。
+
+3. 通过移动角色到达河边则游戏胜利。
+
+4. 游戏胜利后可以点击重新开始按钮重新开始游戏。
+
+### 项目说明
+
+青蛙过河游戏是我在 Udacity 前端开发（进阶）课程的练习项目。完整的开发这款小游戏将会用到 `Canvas`、`面向对象`、`JavaScript 事件`、`ES6 语法`等 Web 前端知识点。index.html、style.css 是网页的结构和样式，engine.js 是游戏引擎和基础配置，app.js 是游戏的核心文件，控制游戏逻辑。

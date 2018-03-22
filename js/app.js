@@ -27,10 +27,11 @@ var Enemy = function (x, y, speed, dt) {
 // 此为游戏必须的函数，用来更新敌人的位置
 // 参数: dt ，表示时间间隙
 Enemy.prototype.update = function (dt) {
-    // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
-    // 都是以同样的速度运行的
+    // 碰撞检测 
     this.checkCollision(player);
-    this.x += this.speed;
+    // 给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
+    // 都是以同样的速度运行的
+    this.x += (this.speed * 80) * dt;
     if (this.x >= 500) {
         // 回到起始点
         this.x = -55;
@@ -54,11 +55,12 @@ Enemy.prototype.checkCollision = function (player) {
 
 // 判定碰撞检测
 Enemy.prototype.isCollision = function (player) {
-    // 当玩家与敌人在同一行 且玩家进入敌人范围内则判定碰撞成立
-    if ((this.x + 70 >= player.x && this.x < player.x || this.x - 70 <= player.x && this.x > player.x) && this.y == player.y) {
-        return true;
+    // 当玩家与敌人在同一行 且玩家进入敌人碰撞半径范围内则判定碰撞成立
+    if (this.y == player.y) {
+        if (this.x + 70 >= player.x && this.x < player.x || this.x - 70 <= player.x && this.x > player.x) {
+            return true; 
+        }
     }
-
     return false;
 }
 
@@ -81,8 +83,8 @@ Player.prototype.update = function (dt) {
 // 重新开始
 Player.prototype.resume = function () {
     // 将玩家移动到起始点
-    player.x = 202;
-    player.y = 83 * 4 + 55;
+    this.x = 202;
+    this.y = 83 * 4 + 55;
 }
 
 // 过河检测
@@ -92,6 +94,9 @@ Player.prototype.isEnterRiver = function () {
     }
 }
 
+const CELL_WIDTH = 101;
+const CELL_HEIGHT = 83; 
+
 /**
  * 控制玩家移动函数
  * @param {movent} 移动方向 
@@ -100,22 +105,22 @@ Player.prototype.handleInput = function (movement) {
     switch (movement) {
         case 'left':
             if (this.canMoveLeft()) {
-                this.move(-101, 0);
+                this.move(-CELL_WIDTH, 0);
             }
             break;
         case 'right':
             if (this.canMoveRight()) {
-                this.move(101, 0);
+                this.move(CELL_WIDTH, 0);
             }
             break;
         case 'up':
             if (this.canMoveUp()) {
-                this.move(0, -83);
+                this.move(0, -CELL_HEIGHT);
             }
             break;
         case 'down':
             if (this.canMoveDown()) {
-                this.move(0, 83);
+                this.move(0, CELL_HEIGHT);
             }
             break;
     }

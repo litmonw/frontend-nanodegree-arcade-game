@@ -24,7 +24,7 @@ var Engine = (function (global) {
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
-    /* 这个函数是整个游戏的主入口，负责适当的调用 update / render 函数 */
+    /* 这个函数是整个游戏的主  入口，负责适当的调用 update / render 函数 */
     function main() {
         /* 如果你想要更平滑的动画过度就需要获取时间间隙。因为每个人的电脑处理指令的
          * 速度是不一样的，我们需要一个对每个人都一样的常数（而不管他们的电脑有多快）
@@ -97,7 +97,7 @@ var Engine = (function (global) {
             numCols = 5,
             row, col;
 
-        // Before drawing, clear existing canvas
+        // 在绘制前，清除已存在的 canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
         /* 遍历我们上面定义的行和列，用 rowImages 数组，在各自的各个位置绘制正确的图片 */
@@ -135,7 +135,7 @@ var Engine = (function (global) {
     }
 
     /* 紧接着我们来加载我们知道的需要来绘制我们游戏关卡的图片。然后把 init 方法设置为回调函数。
-     * 那么党这些图片都已经加载完毕的时候游戏就会开始。
+     * 那么当这些图片都已经加载完毕的时候游戏就会开始。
      */
     Resources.load([
         'images/stone-block.png',
